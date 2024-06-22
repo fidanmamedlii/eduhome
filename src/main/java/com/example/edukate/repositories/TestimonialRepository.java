@@ -1,4 +1,7 @@
 package com.example.edukate.repositories;
 
-public interface TestimonialRepository {
+import com.example.edukate.models.Testimonial;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TestimonialRepository extends JpaRepository<Testimonial,Long> {
 }

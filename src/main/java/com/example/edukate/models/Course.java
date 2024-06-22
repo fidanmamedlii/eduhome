@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,10 +16,10 @@ import java.util.Date;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     private Long id;
 
-    @Column(name = "CourseName")
+    @Column(name = "CourseName", nullable = false)
     private String name;
 
     @Column(name = "Description")
@@ -27,20 +28,11 @@ public class Course {
     @Column(name = "Image")
     private String image;
 
-    @Column(name = "ApplyDescription")
-    private String applyDescription;
-
-    @Column(name = "CertificationDescription")
-    private String certificationDescription;
-
-    @Column(name = "StartDate")
-    private Date startDate;
-
     @Column(name = "DurationTime")
     private String durationTime;
 
-    @Column(name = "ClassDuration")
-    private String classDuration;
+    @Column(name = "LectureCount")
+    private int lectureCount;
 
     @Column(name = "SkillLevel")
     private String skillLevel;
@@ -48,21 +40,23 @@ public class Course {
     @Column(name = "Language")
     private String language;
 
-    @Column(name = "StudentCapacity")
-    private int studentCapacity;
-
-    @Column(name = "Assessments")
-    private String assessments;
-
-    @Column(name = "Price")
+    @Column(name = "Price", nullable = false)
     private double price;
 
     @ManyToOne
     @JoinColumn(name = "instructor_id", referencedColumnName = "id")
     private Instructor instructor;
 
-    @Column(name = "is_deleted")
+    @ManyToOne
+    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    private Department department;
+
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER)
+    private List<Student> student;
+
+    @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted = false;
 
-    private int rating;
+    @Column(name = "Rating")
+    private double rating;
 }

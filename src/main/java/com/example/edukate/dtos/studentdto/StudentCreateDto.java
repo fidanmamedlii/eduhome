@@ -1,12 +1,16 @@
 package com.example.edukate.dtos.studentdto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class StudentCreateDto {
     private String name;
     private String surname;
-    private Long departmentId;
+    private List<Long> courseIds;
 }

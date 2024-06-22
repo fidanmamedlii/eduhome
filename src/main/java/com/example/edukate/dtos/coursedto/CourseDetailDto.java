@@ -1,13 +1,15 @@
 package com.example.edukate.dtos.coursedto;
 
 import com.example.edukate.dtos.instructordto.InstructorDto;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class CourseDetailDto {
     private Long id;
     private String name;

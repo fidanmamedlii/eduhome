@@ -3,6 +3,8 @@ package com.example.edukate.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Entity
 @Getter
@@ -22,9 +24,14 @@ public class Student {
     @Column(name = "Surname")
     private String surname;
 
-    @ManyToOne
-    @JoinColumn(name = "department_id", referencedColumnName = "id")
-    private Department department;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "Student_Course",
+    joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "course_id", referencedColumnName = "id"))
+    private List<Course> courses;
+
+    @OneToMany(mappedBy = "student")
+    private List<Testimonial> testimonials;
 
     @Column(name = "is_deleted")
     private boolean isDeleted = false;

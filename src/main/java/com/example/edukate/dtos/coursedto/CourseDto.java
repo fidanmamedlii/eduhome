@@ -9,8 +9,9 @@ import lombok.*;
 @Builder
 
 public class CourseDto {
+    private Long id;
     private String name;
-    private int rating;
+    private double rating;
     private String image;
     private String instructorName;
 }

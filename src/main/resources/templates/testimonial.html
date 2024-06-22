@@ -21,10 +21,10 @@
                     <div class="input-group-prepend">
                         <button class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle" type="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">Courses</button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Courses 1</a>
-                            <a class="dropdown-item" href="#">Courses 2</a>
-                            <a class="dropdown-item" href="#">Courses 3</a>
+                        <div th:each="course:${courses}" class="dropdown-menu">
+                            <a class="dropdown-item" href="#" th:text="${course.getName()}"></a>
+<!--                            <a class="dropdown-item" href="#">Courses 2</a>-->
+<!--                            <a class="dropdown-item" href="#">Courses 3</a>-->
                         </div>
                     </div>
                     <input type="text" class="form-control border-light" style="padding: 30px 25px;" placeholder="Keyword">
@@ -51,28 +51,18 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="owl-carousel testimonial-carousel">
-                        <div class="bg-light p-5">
-                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
-                            <div class="d-flex flex-shrink-0 align-items-center mt-4">
+                        <div class="bg-light p-5" th:each="testimonial :${testimonials}">
+                            <i class="fa fa-3x fa-quote-left text-primary mb-4"th:each="testimonial :${testimonials}"></i>
+                            <p th:text="${testimonial.getContent()}"></p>
+                            <div class="d-flex flex-shrink-0 align-items-center mt-4 " >
                                 <img class="img-fluid mr-4" src="img/testimonial-2.jpg" alt="">
                                 <div>
-                                    <h5>Student Name</h5>
-                                    <span>Web Design</span>
+                                    <h5 th:text="${testimonial.getStudent().getName() + testimonial.getStudent().getSurname()}"></h5>
+<!--                                    <span th:text="${testimonial.getStudent().getCourses().getFirst().getName()}"></span>-->
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-light p-5">
-                            <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
-                            <p>Sed et elitr ipsum labore dolor diam, ipsum duo vero sed sit est est ipsum eos clita est ipsum. Est nonumy tempor at kasd. Sed at dolor duo ut dolor, et justo erat dolor magna sed stet amet elitr duo lorem</p>
-                            <div class="d-flex flex-shrink-0 align-items-center mt-4">
-                                <img class="img-fluid mr-4" src="img/testimonial-1.jpg" alt="">
-                                <div>
-                                    <h5>Student Name</h5>
-                                    <span>Web Design</span>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

@@ -18,7 +18,10 @@ public class Testimonial {
     @Column(name = "Content")
     private String content;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student_id", referencedColumnName = "id")
     private Student student;
+
+    @Column(name = "is_deleted")
+    private boolean isDeleted = false;
 }

@@ -9,8 +9,7 @@ import java.util.List;
 
 public interface CourseService {
     List<CourseDto> getCourses();
-    List<CourseDto> getHomeCourses();
-    CourseDetailDto courseDetail(Long id);
+    CourseDto courseDto(Long id);
     void addCourse(CourseCreateDto courseCreateDto);
     void updateCourse(Long id, CourseUpdateDto courseUpdateDto);
     void deleteCourse(Long id);

@@ -20,12 +20,13 @@ public class Instructor {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "instructor")
+    @OneToMany(mappedBy = "instructor", fetch = FetchType.EAGER)
     private List<Course> courses;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="departmentId",referencedColumnName = "id")
     private Department department;
+
     @Column(name = "is_deleted")
     private boolean isDeleted = false;
 }

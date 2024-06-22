@@ -1,10 +1,8 @@
 package com.example.edukate.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
@@ -14,16 +12,22 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "departments")
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+    Long id;
+    String name;
 
     @OneToMany(mappedBy = "department")
-    private List<Instructor> instructors;
+    List<Instructor> instructors;
+
+    @OneToMany(mappedBy = "department")
+    List<Course> courses;
+
     @Column(name = "is_deleted")
-    private boolean isDeleted = false;
+    boolean isDeleted = false;
 
 }
 
