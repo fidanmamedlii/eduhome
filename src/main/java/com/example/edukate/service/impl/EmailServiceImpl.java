@@ -15,8 +15,8 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public void sendConfirmationEmail(String email, String token) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("nathen.quigley@ethereal.email");
-        message.setTo("nathen.quigley@ethereal.email");
+        message.setFrom("fidanmammadli28@gmail.com");
+        message.setTo(email);
         message.setSubject("Confirm email");
         // http://localhost:9090/auth/confrim?email=rizvan@itbrain.edu.az&token=adfhaskjfhaj
         // Template literals
@@ -27,6 +27,12 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public void sendPasswordResetEmail(String email, String token) {
-
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("fidanmammadli28@gmail.com");
+        message.setTo(email);
+        message.setSubject("Password Reset Request");
+        String resetUrl = "http://localhost:8085/reset-password?token=" + token;
+        message.setText("To reset your password, click the link below:\n" + resetUrl);
+        mailSender.send(message);
     }
 }

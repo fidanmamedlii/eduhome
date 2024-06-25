@@ -18,14 +18,15 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
-//    @GetMapping("/login/form")
-//    public String showLoginForm(Model model, @RequestParam(value = "error", required = false) String error) {
-//        if (error != null) {
-//            model.addAttribute("error", "Invalid username or password. Please try again.");
-//        }
-//        return "dashboard/login"; // Return the view for the login form
-//    }
-    @GetMapping("/login")
+
+    @GetMapping("/login/form")
+    public String showLoginForm(Model model, @RequestParam(value = "error", required = false) String error) {
+        if (error != null) {
+            model.addAttribute("error", "Invalid username or password. Please try again.");
+        }
+        return "dashboard/login"; // Return the view for the login form
+    }
+    @PostMapping("/login")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
         User user = userService.findUserByEmail(username);
         if (user != null && userService.checkPassword(user, password)) {

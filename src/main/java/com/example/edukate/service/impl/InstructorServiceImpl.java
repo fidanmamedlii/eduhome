@@ -11,6 +11,7 @@ import com.example.edukate.repositories.DepartmentRepository;
 import com.example.edukate.repositories.InstructorRepository;
 import com.example.edukate.service.InstructorService;
 import jakarta.transaction.Transactional;
+import org.checkerframework.checker.units.qual.A;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,11 +20,13 @@ import java.util.List;
 
 @Service
 public class InstructorServiceImpl implements InstructorService {
+    @Autowired
     private final InstructorRepository instructorRepository;
-
+    @Autowired
     private final DepartmentRepository departmentRepository;
-
+    @Autowired
     private final CourseRepository courseRepository;
+    @Autowired
     private final ModelMapper mapper;
 
     @Autowired

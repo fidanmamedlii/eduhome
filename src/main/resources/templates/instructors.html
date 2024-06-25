@@ -50,7 +50,7 @@
           <img class="img-fluid w-100" src="img/team-2.jpg" alt="">
           <div class="bg-light text-center p-4">
             <h5 class="mb-3" th:text="${instructor.getName()}"></h5>
-            <p class="mb-2" th:text="${instructor.department.name}"></p>
+            <p class="mb-2" th:text="${instructor.getDepartment().getName()}"></p>
           </div>
         </div>
         </div>
